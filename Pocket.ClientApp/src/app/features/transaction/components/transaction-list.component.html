@@ -1,0 +1,40 @@
+
+
+<div class="flex mt-2 mb-2 justify-content-between">
+  <span class="text-4xl">Transactions </span>
+
+  <span class="p-input-icon-right">
+    <i class="pi pi-times" *ngIf="searchTerm" (click)="search('')"></i>
+    <input [(ngModel)]="searchTerm" type="text" pInputText placeholder="Search" (keyup)="search()" />
+  </span>
+
+  <p-button *ngFor="let c of currencies" [label]="c.code" outlined="true" [styleClass]="currency == c.code ? 'p-button-raised':'p-button-link'" (click)="currencyChange(c.code)"></p-button>
+  <p-button label="Create" icon="pi pi-plus" styleClass="p-button-link" (click)="openTransactionDialog()"></p-button>
+</div>
+
+<p-table [value]="transactions" styleClass="p-datatable-sm w-full"
+         [rowHover]="true" sortField="name">
+  <ng-template pTemplate="header">
+    <tr>
+      <th class="text-right">Amount</th>
+      <th>Currency</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Group</th>
+      <th class="w-3"></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-item let-i="rowIndex">
+    <tr>
+      <td class="text-right">{{item.amount}}</td>
+      <td>{{item.currency}}</td>
+      <td>{{item.transactionDate|date:'short'}}</td>
+      <td>{{item.description}}</td>
+      <td><a class='p-ripple p-element p-button-link p-button p-component' (click)="search(item.transactionGroup)">{{item.transactionGroup}}</a></td>
+      <td>
+        <p-button label="Edit" icon="pi pi-pencil" styleClass="p-button-link" (click)="openTransactionDialog(item.id)"></p-button>
+        <p-button label="Delete" icon="pi pi-times" styleClass="p-button-link" (click)="deleteTransaction(item.id)"></p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
