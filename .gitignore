@@ -1,0 +1,7 @@
+.vs/
+Pocket.Application/bin/
+Pocket.Application/obj/
+Pocket.Domain/bin/
+Pocket.Domain/obj/
+Pocket.Infrastructure/bin/
+Pocket.Infrastructure/obj/
