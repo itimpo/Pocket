@@ -4,7 +4,7 @@
   </ng-template>
   <ng-template pTemplate="end">
     <div *ngIf="!userStore.isAuthenticated">
-      <p-button icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-text p-button-sm" [routerLink]="['/user/login']" label="Creator Login"></p-button>
+      <p-button icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-text p-button-sm" [routerLink]="['/user/login']" label="Login"></p-button>
     </div>
     <div *ngIf="userStore.isAuthenticated">
       <p-button icon="pi pi-user" styleClass="p-button-rounded p-button-info p-button-text p-button-sm" (click)="logout()" label="Logout"></p-button>
